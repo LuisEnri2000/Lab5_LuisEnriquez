@@ -1,6 +1,9 @@
 
+import java.util.Random;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -65,10 +68,36 @@ public class Main extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        est_gen = new javax.swing.JComboBox<>();
+        est_nom = new javax.swing.JTextField();
+        est_ape = new javax.swing.JTextField();
+        est_edad = new javax.swing.JSpinner();
+        jButton5 = new javax.swing.JButton();
+        est_facu = new javax.swing.JComboBox<>();
+        jd_licenciatura = new javax.swing.JDialog();
+        jLabel21 = new javax.swing.JLabel();
+        est_carrera = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        costo_lic = new javax.swing.JTextField();
+        jefe_lic = new javax.swing.JTextField();
+        jd_ingenieria = new javax.swing.JDialog();
+        jLabel24 = new javax.swing.JLabel();
+        carrera_nom = new javax.swing.JComboBox<>();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        bot_ing = new javax.swing.JButton();
+        f_costo = new javax.swing.JTextField();
+        f_jefe = new javax.swing.JTextField();
+        jd_salud = new javax.swing.JDialog();
+        jLabel27 = new javax.swing.JLabel();
+        carrera_nom1 = new javax.swing.JComboBox<>();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        bot_ing1 = new javax.swing.JButton();
+        f_costo1 = new javax.swing.JTextField();
+        f_jefe1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         elArbol = new javax.swing.JTree();
@@ -271,6 +300,7 @@ public class Main extends javax.swing.JFrame {
         });
         popEstudiantes.add(opArbolar);
 
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel16.setText("Crear estudiante");
 
         jLabel17.setText("Nombre:");
@@ -281,15 +311,24 @@ public class Main extends javax.swing.JFrame {
 
         jLabel20.setText("Genero:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", "Pokemon", "Avenger", "Otro" }));
+        est_gen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino", "Pokemon", "Avenger", "Otro" }));
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        est_nom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                est_nomActionPerformed(evt);
             }
         });
 
-        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(18, 16, 100, 1));
+        est_edad.setModel(new javax.swing.SpinnerNumberModel(18, 16, 100, 1));
+
+        jButton5.setText("-->");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        est_facu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Licenciatura", "Ingenieria", "Ciencias de la salud" }));
 
         javax.swing.GroupLayout jd_crearEstudianteLayout = new javax.swing.GroupLayout(jd_crearEstudiante.getContentPane());
         jd_crearEstudiante.getContentPane().setLayout(jd_crearEstudianteLayout);
@@ -307,11 +346,16 @@ public class Main extends javax.swing.JFrame {
                             .addComponent(jLabel19))
                         .addGap(31, 31, 31)
                         .addGroup(jd_crearEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(98, Short.MAX_VALUE))
+                            .addComponent(est_ape, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(est_gen, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(est_nom, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(est_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(est_facu, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(175, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_crearEstudianteLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(74, 74, 74))
         );
         jd_crearEstudianteLayout.setVerticalGroup(
             jd_crearEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -321,20 +365,203 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jd_crearEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(est_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jd_crearEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(est_ape, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jd_crearEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(est_edad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(jd_crearEstudianteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(103, Short.MAX_VALUE))
+                    .addComponent(est_gen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39)
+                .addComponent(est_facu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addGap(43, 43, 43))
+        );
+
+        jLabel21.setText("Licenciaturas:");
+
+        est_carrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Finanzas", "Derecho", "Administracion de empresas", "Diseño Gráfico", "Mercadotecnia" }));
+        est_carrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                est_carreraActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setText("Costo:");
+
+        jLabel23.setText("Jefe de carrera:");
+
+        jButton6.setText("Agregar estudiante");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_licenciaturaLayout = new javax.swing.GroupLayout(jd_licenciatura.getContentPane());
+        jd_licenciatura.getContentPane().setLayout(jd_licenciaturaLayout);
+        jd_licenciaturaLayout.setHorizontalGroup(
+            jd_licenciaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_licenciaturaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jd_licenciaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(est_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel21)
+                    .addGroup(jd_licenciaturaLayout.createSequentialGroup()
+                        .addGroup(jd_licenciaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel23))
+                        .addGap(27, 27, 27)
+                        .addGroup(jd_licenciaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(costo_lic)
+                            .addComponent(jefe_lic, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
+                .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_licenciaturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(37, 37, 37))
+        );
+        jd_licenciaturaLayout.setVerticalGroup(
+            jd_licenciaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_licenciaturaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel21)
+                .addGap(26, 26, 26)
+                .addComponent(est_carrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(jd_licenciaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(costo_lic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_licenciaturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(jefe_lic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(35, 35, 35))
+        );
+
+        jLabel24.setText("Ingenierias:");
+
+        carrera_nom.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sistemas Computacionales", "Industrial y de Sistemas", "Mecatrónica", "Biomédica ", "Energía" }));
+
+        jLabel25.setText("Costo:");
+
+        jLabel26.setText("Jefe de carrera:");
+
+        bot_ing.setText("Agregar estudiante");
+        bot_ing.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bot_ingActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_ingenieriaLayout = new javax.swing.GroupLayout(jd_ingenieria.getContentPane());
+        jd_ingenieria.getContentPane().setLayout(jd_ingenieriaLayout);
+        jd_ingenieriaLayout.setHorizontalGroup(
+            jd_ingenieriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ingenieriaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jd_ingenieriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carrera_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24)
+                    .addGroup(jd_ingenieriaLayout.createSequentialGroup()
+                        .addGroup(jd_ingenieriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel25)
+                            .addComponent(jLabel26))
+                        .addGap(27, 27, 27)
+                        .addGroup(jd_ingenieriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(f_costo)
+                            .addComponent(f_jefe, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
+                .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_ingenieriaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bot_ing)
+                .addGap(37, 37, 37))
+        );
+        jd_ingenieriaLayout.setVerticalGroup(
+            jd_ingenieriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ingenieriaLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel24)
+                .addGap(26, 26, 26)
+                .addComponent(carrera_nom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(jd_ingenieriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(f_costo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_ingenieriaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(f_jefe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(bot_ing)
+                .addGap(35, 35, 35))
+        );
+
+        jLabel27.setText("Salud:");
+
+        carrera_nom1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicina y Cirugía", "Odontología", "Nutrición", "Terapia Física Ocupacional" }));
+
+        jLabel28.setText("Costo:");
+
+        jLabel29.setText("Jefe de carrera:");
+
+        bot_ing1.setText("Agregar estudiante");
+        bot_ing1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bot_ing1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jd_saludLayout = new javax.swing.GroupLayout(jd_salud.getContentPane());
+        jd_salud.getContentPane().setLayout(jd_saludLayout);
+        jd_saludLayout.setHorizontalGroup(
+            jd_saludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_saludLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jd_saludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(carrera_nom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel27)
+                    .addGroup(jd_saludLayout.createSequentialGroup()
+                        .addGroup(jd_saludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel28)
+                            .addComponent(jLabel29))
+                        .addGap(27, 27, 27)
+                        .addGroup(jd_saludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(f_costo1)
+                            .addComponent(f_jefe1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))))
+                .addContainerGap(109, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_saludLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(bot_ing1)
+                .addGap(37, 37, 37))
+        );
+        jd_saludLayout.setVerticalGroup(
+            jd_saludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_saludLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel27)
+                .addGap(26, 26, 26)
+                .addComponent(carrera_nom1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addGroup(jd_saludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(f_costo1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_saludLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel29)
+                    .addComponent(f_jefe1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addComponent(bot_ing1)
+                .addGap(35, 35, 35))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -384,6 +611,11 @@ public class Main extends javax.swing.JFrame {
         jScrollPane4.setViewportView(lista_estudiantes);
 
         jButton4.setText("Agregar Estudiante");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -551,12 +783,93 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_opEliminarMasActionPerformed
 
     private void opArbolarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opArbolarActionPerformed
-        // TODO add your handling code here:
+        DefaultListModel modeloLista = (DefaultListModel) lista_estudiantes.getModel();
+        int pos = lista_maestros.getSelectedIndex();
+            
+        if (pos < 0) {
+            pos = 0;
+        }
+        
+            // AAAAAAAH  
+            DefaultMutableTreeNode est = new DefaultMutableTreeNode((Estudiante) modeloLista.getElementAt(pos));
+            DefaultTreeModel modeloArbol = (DefaultTreeModel) elArbol.getModel();
+            DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloArbol.getRoot();
+
+            raiz.add(est);
+
+            modeloArbol.reload();
+            AYUDA c;
     }//GEN-LAST:event_opArbolarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void est_nomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_est_nomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_est_nomActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jd_crearEstudiante.setLocationRelativeTo(this);
+        jd_crearEstudiante.pack();
+        jd_crearEstudiante.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        if (est_facu.getSelectedIndex() == 0) {
+            jd_licenciatura.setLocationRelativeTo(this);
+            jd_licenciatura.pack();
+            jd_licenciatura.setVisible(true);
+            jd_crearEstudiante.setVisible(false);
+        }
+        if (est_facu.getSelectedIndex() == 1) {
+            jd_ingenieria.setLocationRelativeTo(this);
+            jd_ingenieria.pack();
+            jd_ingenieria.setVisible(true);
+            jd_crearEstudiante.setVisible(false);
+            
+        }
+        if (est_facu.getSelectedIndex() == 2) {
+            jd_salud.setLocationRelativeTo(this);
+            jd_salud.pack();
+            jd_salud.setVisible(true);
+            jd_crearEstudiante.setVisible(false);
+            
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void bot_ingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bot_ingActionPerformed
+        Random r = new Random();
+        
+        DefaultListModel modelo = (DefaultListModel)lista_estudiantes.getModel();
+
+        Carrera car = new Carrera(carrera_nom.getSelectedItem().toString(),est_facu.getSelectedItem().toString(),Double.parseDouble(f_costo.getText()),f_jefe.getText());
+        Estudiante est = new Estudiante(est_nom.getText(),est_ape.getText(),r.nextInt(30000),(int) est_edad.getValue(),est_gen.getSelectedItem().toString(),car);
+        modelo.addElement(est);
+        jd_ingenieria.setVisible(false);
+    }//GEN-LAST:event_bot_ingActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        Random r = new Random();
+        
+        DefaultListModel modelo = (DefaultListModel)lista_estudiantes.getModel();
+
+        Carrera car = new Carrera(est_carrera.getSelectedItem().toString(),est_facu.getSelectedItem().toString(),Double.parseDouble(costo_lic.getText()),jefe_lic.getText());
+        Estudiante est = new Estudiante(est_nom.getText(),est_ape.getText(),r.nextInt(30000),(int) est_edad.getValue(),est_gen.getSelectedItem().toString(),car);
+        modelo.addElement(est);
+        jd_licenciatura.setVisible(false);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void est_carreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_est_carreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_est_carreraActionPerformed
+
+    private void bot_ing1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bot_ing1ActionPerformed
+        Random r = new Random();
+        
+        DefaultListModel modelo = (DefaultListModel)lista_estudiantes.getModel();
+
+        Carrera car = new Carrera(carrera_nom1.getSelectedItem().toString(),est_facu.getSelectedItem().toString(),Double.parseDouble(f_costo1.getText()),f_jefe1.getText());
+        Estudiante est = new Estudiante(est_nom.getText(),est_ape.getText(),r.nextInt(30000),(int) est_edad.getValue(),est_gen.getSelectedItem().toString(),car);
+        modelo.addElement(est);
+        jd_salud.setVisible(false);
+    }//GEN-LAST:event_bot_ing1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -596,12 +909,28 @@ public class Main extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bot_ing;
+    private javax.swing.JButton bot_ing1;
+    private javax.swing.JComboBox<String> carrera_nom;
+    private javax.swing.JComboBox<String> carrera_nom1;
+    private javax.swing.JTextField costo_lic;
     private javax.swing.JTree elArbol;
+    private javax.swing.JTextField est_ape;
+    private javax.swing.JComboBox<String> est_carrera;
+    private javax.swing.JSpinner est_edad;
+    private javax.swing.JComboBox<String> est_facu;
+    private javax.swing.JComboBox<String> est_gen;
+    private javax.swing.JTextField est_nom;
+    private javax.swing.JTextField f_costo;
+    private javax.swing.JTextField f_costo1;
+    private javax.swing.JTextField f_jefe;
+    private javax.swing.JTextField f_jefe1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -615,6 +944,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -626,12 +964,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JDialog jd_crearClase;
     private javax.swing.JDialog jd_crearEstudiante;
     private javax.swing.JDialog jd_crearMaestro;
+    private javax.swing.JDialog jd_ingenieria;
+    private javax.swing.JDialog jd_licenciatura;
+    private javax.swing.JDialog jd_salud;
+    private javax.swing.JTextField jefe_lic;
     private javax.swing.JList<String> lista_clases;
     private javax.swing.JList<String> lista_estudiantes;
     private javax.swing.JList<String> lista_maestros;
